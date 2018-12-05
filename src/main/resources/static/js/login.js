@@ -11,7 +11,7 @@ $("#submit").click(function () {
         success: function (data) {
             if(data.success){
                 alert(data.message);
-                window.location.href="/toIndex";
+                window.location.href="index.html";
             }else {
                 alert(data.message);
             }

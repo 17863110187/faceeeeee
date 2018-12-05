@@ -8,34 +8,33 @@
     <link href="../bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../css/index.css" rel="stylesheet">
-    <script type="text/javascript" src="../js/index.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">人脸识别考勤系统</a>
+        <a class="navbar-brand" href="#">Expand at sm</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav mr-auto">
-                <!--<li class="nav-item active">-->
-                    <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="#">Link</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link disabled" href="#">Disabled</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item dropdown">-->
-                    <!--<a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
-                    <!--<div class="dropdown-menu" aria-labelledby="dropdown03">-->
-                        <!--<a class="dropdown-item" href="#">Action</a>-->
-                        <!--<a class="dropdown-item" href="#">Another action</a>-->
-                        <!--<a class="dropdown-item" href="#">Something else here</a>-->
-                    <!--</div>-->
-                <!--</li>-->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Search">
@@ -43,98 +42,53 @@
         </div>
     </nav>
 
-
-    <div id="sidebar">
-        <div class="sidebar-menu nav-collapse">
-            <div id="sidebar_loading">
-                <i class="fa fa-spinner fa-spin"></i>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Collapsible Group Item #1
+                    </button>
+                </h5>
             </div>
-            <ul id="init_side_bar">
-                <li class="has-sub open">
-                    <a href="javascript:;">
-                        <i class="fa fa-bar-chart-o" aria-hidden="true"></i>
-                        <span class="menu-text">部门考勤</span>
-                    </a>
-                    <ul class="sub" style="display: block;">
-                        <li>
-                            <a id = "attendanceSummary" onclick="toIndex('/toAttendanceSummary')">
-                                <span class="sub-menu-text">考勤汇总</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a id = "toDetailedInformation" onclick="toIndex('/toDetailedInformation')">
-                                <span class="sub-menu-text">详细考勤信息</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub open">
-                    <a href="javascript:;">
-                        <i class="fa fa-bar-chart-o" aria-hidden="true"></i>
-                        <span class="menu-text">个人考勤</span>
-                    </a>
-                    <ul class="sub" style="display: block;">
-                        <li>
-                            <a id = "brushFace" onclick="toIndex('/toBrushFace')">
-                                <span class="sub-menu-text">刷脸上班</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a id = "attendanceDetails" onclick="toIndex('/toAttendanceDetails')">
-                                <span class="sub-menu-text">个人考勤详情</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub open">
-                    <a href="javascript:;">
-                        <i class="fa fa-bar-chart-o"></i>
-                        <span class="menu-text">人员信息</span>
-                    </a>
-                    <ul class="sub" style="display: block;">
-                        <li>
-                            <a id = "addPersonnel" onclick="toIndex('/toAddPersonnel')">
-                                <span class="sub-menu-text">添加人员</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a id = "informationList" onclick="toIndex('/toInformationList')">
-                                <span class="sub-menu-text">信息列表</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub open">
-                    <a href="javascript:;">
-                        <i class="fa fa-gavel "></i>
-                        <span class="menu-text">设置</span>
-                    </a>
-                    <ul class="sub" style="display: block;">
-                        <li>
-                            <a id = "modifyInformation" onclick="toIndex('/toModifyInformation')">
-									<span class="sub-menu-text">修改个人信息
-										<span class="nav-counter" id="check-count"></span>
-									</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a id = "changePassword" onclick="toIndex('/toChangePassword')">
-									<span class="sub-menu-text">修改密码
-										<span class="nav-counter" id="check-increament-count"></span>
-									</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  s labore sustainable VHS.
+                </div>
+            </div>
         </div>
-    </div>
 
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Collapsible Group Item #2
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
 
-    <div id="main-content" class="unplay" style="height: auto; min-width:1280px;">
-        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="iframepage" name="iframepage" class="container">
-            <!-- 在此处插入其他网页 -->
-        </iframe>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Collapsible Group Item #3
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
