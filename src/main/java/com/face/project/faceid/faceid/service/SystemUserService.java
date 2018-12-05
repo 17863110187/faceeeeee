@@ -6,4 +6,6 @@ public interface SystemUserService {
     int loginCheck(Long id,String psw);
 
     int resetPsw(SystemUser user);
+
+    SystemUser getUserById(Long id);
 }

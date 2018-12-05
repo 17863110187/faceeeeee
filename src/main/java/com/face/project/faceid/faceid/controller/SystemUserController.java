@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
@@ -19,7 +20,7 @@ public class SystemUserController {
 
     @RequestMapping(value = "login")
     @ResponseBody
-    public Map<String,Object> login(@RequestParam(required = true)Long id, @RequestParam(required = true)String psw){
+    public Map<String,Object> login(@RequestParam(required = true)Long id, @RequestParam(required = true)String psw, HttpSession session){
         if (id==null){
             return ResponceMap.responceError("账号不能为空");
         }
@@ -33,6 +34,8 @@ public class SystemUserController {
             case 0:
                 return  ResponceMap.responceError("密码错误");
             case 1:
+                SystemUser user = systemUserService.getUserById(id);
+                session.setAttribute("user",user);
                 return  ResponceMap.responceSuccess("登陆成功");
         }
         return ResponceMap.responceSuccess("登陆成功");

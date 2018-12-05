@@ -6,6 +6,8 @@ import com.face.project.faceid.faceid.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 @Service
 public class SystemUserServiceImpl implements SystemUserService {
     @Autowired
@@ -19,6 +21,7 @@ public class SystemUserServiceImpl implements SystemUserService {
         }
         if(user.getPassword().equals(psw)){
             return 1;
+
         }else {
             return 0;
         }
@@ -27,6 +30,11 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public int resetPsw(SystemUser user) {
         return systemUserDao.updatePasswordByPhone(user);
+    }
+
+    @Override
+    public SystemUser getUserById(Long id) {
+        return systemUserDao.selectUserById(id);
     }
 
 }
