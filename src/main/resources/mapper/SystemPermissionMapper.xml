@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.face.project.faceid.faceid.dao.SystemPermissionDao">
-    <resultMap id="Base_Result_Map" type="com.face.project.faceid.faceid.model.SystemPermission" >
+    <resultMap id="BaseResultMap" type="com.face.project.faceid.faceid.model.SystemPermission" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="role" property="role" jdbcType="VARCHAR" />
         <result column="permission" property="permission" jdbcType="VARCHAR" />
         <result column="dicName" property="permissionName" jdbcType="VARCHAR" />
     </resultMap>
-    <select id="selectPermission" resultMap="Base_Result_Map" parameterType="java.lang.String">
+    <select id="selectPermission" resultMap="BaseResultMap" parameterType="java.lang.String">
         select p.id,p.role,p.permission,d.dicName
         from SystemPermission p,SystemDictionary d
         where p.role=#{0} and p.permission=d.dicCode

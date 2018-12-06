@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.face.project.faceid.faceid.dao.SystemDepartDao">
+    <resultMap id="BaseResultMap" type="com.face.project.faceid.faceid.model.SystemDepart" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="department" property="department" jdbcType="VARCHAR" />
+        <result column="deptName" property="deptName" jdbcType="VARCHAR" />
+        <result column="company" property="company" jdbcType="VARCHAR" />
+        <result column="usetime" property="usetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, department, deptName, company, usetime
+    </sql>
+    <select id="selectDepartByCompany" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from SystemDepart
+        where company=#{0}
+    </select>
+</mapper>
