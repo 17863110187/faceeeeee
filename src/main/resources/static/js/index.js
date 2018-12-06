@@ -17,5 +17,12 @@ function toIndex(toIndex) {
     $("#iframepage")
         .parent()
         .removeClass("unplay");
-
+    $("#iframepage").bind("load", function() {
+        $(this).height(
+            $(this)
+                .contents()
+                .find("body")
+                .height()
+        );
+    });
 }
