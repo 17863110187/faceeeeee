@@ -12,5 +12,10 @@ $.ajax({
 });
 
 function toIndex(toIndex) {
+    alert(toIndex);
     document.getElementById("iframepage").src = String(toIndex);
+    $("#iframepage")
+        .parent()
+        .removeClass("unplay");
+
 }
