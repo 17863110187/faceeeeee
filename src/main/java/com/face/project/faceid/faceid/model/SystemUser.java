@@ -90,4 +90,18 @@ public class SystemUser {
     public void setPhone(Long phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "SystemUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", state='" + state + '\'' +
+                ", depart='" + depart + '\'' +
+                ", phone=" + phone +
+                ", checkPic='" + checkPic + '\'' +
+                '}';
+    }
 }

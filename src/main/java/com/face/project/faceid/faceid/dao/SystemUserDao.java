@@ -7,5 +7,9 @@ import java.util.List;
 public interface SystemUserDao {
     SystemUser selectUserById(Long id);
 
+    SystemUser selectUserByName(String name);
+
     int updatePasswordByPhone(SystemUser user);
+
+    List<SystemUser> selectUserByDepart(String department);
 }

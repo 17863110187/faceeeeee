@@ -14,4 +14,5 @@ public class ConstMap {
     public static final String ERROR_NOPERMISSION="权限不足";
     public static final String ERROR_NOSESSION="登录已超时";
     public static final String ERROR_UNKOWN="未知错误";
+    public static final String ERROR_INPUT="非法输入";
 }

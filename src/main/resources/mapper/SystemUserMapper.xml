@@ -21,6 +21,18 @@
         from SystemUser
         where id=#{0}
     </select>
+    <select id="selectUserByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from SystemUser
+        where name=#{0}
+    </select>
+    <select id="selectUserByDepart" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        u.id,u.name,u.password,u.role,u.state,u.depart,u.phone,u.checkPic
+        from SystemUser u,SystemDepart d
+        where u.depart=d.department and (d.department=#{0} or d.company=#{0})
+    </select>
     <update id="updatePasswordByPhone" parameterType="com.face.project.faceid.faceid.model.SystemUser">
         update SystemUser
         set password=#{password,jdbcType=VARCHAR}
