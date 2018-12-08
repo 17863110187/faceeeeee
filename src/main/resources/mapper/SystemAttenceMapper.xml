@@ -9,6 +9,35 @@
         <result column="year" property="year" jdbcType="INTEGER" />
         <result column="month" property="month" jdbcType="INTEGER" />
     </resultMap>
+    <resultMap id="Base_Result_Map" type="com.face.project.faceid.faceid.model.SystemAttence" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user" property="user" jdbcType="BIGINT" />
+        <result column="inTime" property="inTime" jdbcType="TIMESTAMP" />
+        <result column="outTime" property="outTime" jdbcType="TIMESTAMP" />
+        <result column="inPic" property="inPic" jdbcType="VARCHAR" />
+        <result column="outPic" property="outPic" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAttence" resultMap="Base_Result_Map">
+        select
+        a.id, a.user, a.inTime, a.outTime, a.inPic, a.outPic, u.name as name
+        from SystemAttence a,SystemUser u
+        where
+        a.user = u.id
+        <if test="userId != null">
+            and u.id = #{userId}
+        </if>
+        <if test="userName != null">
+            and u.userName = #{userName}
+        </if>
+        <if test="inTime != null">
+            and a.inTime >= #{inTime}
+        </if>
+        <if test="outTime != null">
+            and a.outTime <![CDATA[<=]]> #{outTime}
+        </if>
+        and a.inTime <![CDATA[<=]]> a.outTime
+    </select>
     <select id="selectAttenceByUser" resultMap="SummaryResultMap" parameterType="com.face.project.faceid.faceid.model.SystemAttenceSummary">
         select sum(time) as time,year,month
         from(

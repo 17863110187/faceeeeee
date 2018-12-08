@@ -9,10 +9,9 @@ import com.face.project.faceid.faceid.service.SystemAttenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @program: faceid
@@ -28,6 +27,31 @@ public class SystemAttenceServiceImpl implements SystemAttenceService {
 
     @Autowired
     private SystemAttenceDao systemAttenceDao;
+
+    @Override
+    public List<SystemAttence> selectAttence(String user, Date inTime, Date outTime) {
+        Long userId = null;
+        String userName = null;
+        int ifString;
+        if (user != null && !user.equals("") && !user.equals("null")) {
+            Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
+            Matcher m = p.matcher(user);
+            if (m.find()) {
+                userName = user;
+            } else {
+                userId = Long.valueOf(user).longValue();
+            }
+        }
+        if (inTime == null) {
+            inTime = null;
+        }
+        if (outTime == null) {
+            outTime = null;
+        }
+        System.out.println("      2222     " + userId + "   " + userName + "   " + inTime + "   " + outTime);
+        List<SystemAttence> attences = systemAttenceDao.selectAttence(userId, userName, inTime, outTime);
+        return attences;
+    }
 
     @Override
     public Map<String, Object> getAttenceSummary(String name, String department, Integer year, Integer month) {

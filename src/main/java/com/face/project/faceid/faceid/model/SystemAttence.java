@@ -10,7 +10,7 @@ import java.util.Date;
  **/
 public class SystemAttence {
     private Long id;
-    private String user;
+    private Long user;
     private String name;
     private Date inTime;
     private Date outTime;
@@ -25,11 +25,11 @@ public class SystemAttence {
         this.id = id;
     }
 
-    public String getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 

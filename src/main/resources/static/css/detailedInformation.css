@@ -1,0 +1,31 @@
+.informationTable{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bar_searchBar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.name{
+    margin-left: 10px;
+}
+
+.inTime{
+    margin-left: 30px;
+}
+
+.outTime{
+    margin-left: 30px;
+}
+
+#search{
+    margin-left: 30px;
+}
+
