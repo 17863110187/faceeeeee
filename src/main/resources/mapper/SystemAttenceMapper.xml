@@ -28,7 +28,7 @@
             and u.id = #{userId}
         </if>
         <if test="userName != null">
-            and u.userName = #{userName}
+            and u.name = #{userName}
         </if>
         <if test="inTime != null">
             and a.inTime >= #{inTime}
