@@ -11,6 +11,8 @@ public interface SystemUserDao {
 
     int updatePasswordByPhone(SystemUser user);
 
+    int AddUserInfo(SystemUser user);
+
     List<SystemUser> selectUserByDepart(String department);
 
     int updateselective(SystemUser user);
