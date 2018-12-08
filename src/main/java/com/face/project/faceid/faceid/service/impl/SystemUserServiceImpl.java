@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @Service
 public class SystemUserServiceImpl implements SystemUserService {
+
     @Autowired
     private SystemUserDao systemUserDao;
 
@@ -35,6 +36,12 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public SystemUser getUserById(Long id) {
         return systemUserDao.selectUserById(id);
+    }
+
+    @Override
+    public boolean modifyifo(SystemUser user) {
+        systemUserDao.updateselective(user);
+        return true;
     }
 
 }

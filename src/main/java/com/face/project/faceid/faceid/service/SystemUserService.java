@@ -8,4 +8,6 @@ public interface SystemUserService {
     int resetPsw(SystemUser user);
 
     SystemUser getUserById(Long id);
+
+    boolean modifyifo(SystemUser user);
 }
