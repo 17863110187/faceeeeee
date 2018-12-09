@@ -81,6 +81,7 @@ public class SystemUser {
 
     public void setCheckPic(String checkPic) {
         this.checkPic = checkPic;
+//        System.out.println(this.checkPic);
     }
 
     public Long getPhone() {

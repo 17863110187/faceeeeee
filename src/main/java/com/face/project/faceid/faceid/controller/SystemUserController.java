@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
+import static com.face.project.faceid.faceid.common.ConstMap.ERROR_NOSESSION;
+
 @Controller
 @RequestMapping(value = "user")
 public class SystemUserController {
@@ -73,5 +75,28 @@ public class SystemUserController {
             }
         }
         return ResponceMap.responceError("确认密码与新密码不一致");
+    }
+
+
+    @RequestMapping(value = "getCheckPic")
+    @ResponseBody
+    public Map<String,Object> getCheckPic(HttpSession session){
+        SystemUser user = (SystemUser) session.getAttribute("user");
+        if(user==null){
+            return ResponceMap.responceError(ERROR_NOSESSION);
+        }else {
+            return ResponceMap.responceSuccess(user.getCheckPic());
+        }
+    }
+
+    @RequestMapping(value = "getWorkState")
+    @ResponseBody
+    public Map<String,Object> getWorkState(HttpSession session){
+        SystemUser user = (SystemUser) session.getAttribute("user");
+        if(user==null){
+            return ResponceMap.responceError(ERROR_NOSESSION);
+        }else {
+            return ResponceMap.responceSuccess(systemUserService.getWorkState(user.getId()));
+        }
     }
 }

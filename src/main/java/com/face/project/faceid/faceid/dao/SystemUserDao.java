@@ -12,4 +12,6 @@ public interface SystemUserDao {
     int updatePasswordByPhone(SystemUser user);
 
     List<SystemUser> selectUserByDepart(String department);
+
+    String selectCheckPicByUser(Long id);
 }

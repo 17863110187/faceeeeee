@@ -16,5 +16,13 @@ import java.util.List;
 public interface SystemAttenceDao {
     SystemAttenceSummary selectAttenceByUser(SystemAttenceSummary summary);
 
+    int selectCountForNullOut(Long id);
+
+    SystemAttence selectAttenceByUserForNull(Long id);
+
+    int insert(SystemAttence attence);
+
+    int update(SystemAttence attence);
+
     List<SystemAttence> selectAttence(@Param("userId")Long userId, @Param("userName")String userName, @Param("inTime")Date inTime, @Param("outTime")Date outTime);
 }
