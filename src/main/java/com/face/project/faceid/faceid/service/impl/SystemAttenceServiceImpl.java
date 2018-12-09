@@ -106,4 +106,21 @@ public class SystemAttenceServiceImpl implements SystemAttenceService {
         result.put("summary",summary);
         return result;
     }
+
+    @Override
+    public int insertAttence(Long id, Boolean workstate) {
+        SystemAttence attence = null;
+        int result;
+        if(workstate){
+            attence = systemAttenceDao.selectAttenceByUserForNull(id);
+            attence.setOutTime(new Date());
+            result = systemAttenceDao.update(attence);
+        }else {
+            attence = new SystemAttence();
+            attence.setUser(id);
+            attence.setInTime(new Date());
+            result = systemAttenceDao.insert(attence);
+        }
+        return result;
+    }
 }

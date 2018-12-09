@@ -77,6 +77,30 @@ public class SystemUserController {
         }
         return ResponceMap.responceError("确认密码与新密码不一致");
     }
+
+
+    @RequestMapping(value = "getCheckPic")
+    @ResponseBody
+    public Map<String,Object> getCheckPic(HttpSession session){
+        SystemUser user = (SystemUser) session.getAttribute("user");
+        if(user==null){
+            return ResponceMap.responceError(ERROR_NOSESSION);
+        }else {
+            return ResponceMap.responceSuccess(user.getCheckPic());
+        }
+    }
+
+    @RequestMapping(value = "getWorkState")
+    @ResponseBody
+    public Map<String,Object> getWorkState(HttpSession session) {
+        SystemUser user = (SystemUser) session.getAttribute("user");
+        if (user == null) {
+            return ResponceMap.responceError(ERROR_NOSESSION);
+        } else {
+            return ResponceMap.responceSuccess(systemUserService.getWorkState(user.getId()));
+        }
+    }
+
     @RequestMapping(value = "modifyifo")
     @ResponseBody
     public Map<String,Object> modifyifo(@RequestParam(required = true)String name ,@RequestParam(required = true)Long phone, @RequestParam(required = true)String email,@RequestParam(required = true)String address, HttpSession session){

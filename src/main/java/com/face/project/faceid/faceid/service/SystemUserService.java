@@ -9,5 +9,9 @@ public interface SystemUserService {
 
     SystemUser getUserById(Long id);
 
+    boolean getWorkState(Long id);
+
+    String getCheckPicByUser(Long id);
+
     boolean modifyifo(SystemUser user);
 }

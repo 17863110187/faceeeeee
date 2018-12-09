@@ -10,9 +10,9 @@
         <result column="state" property="state" jdbcType="CHAR" />
         <result column="depart" property="depart" jdbcType="CHAR" />
         <result column="phone" property="phone" jdbcType="BIGINT" />
+        <result column="checkPic" property="checkPic" jdbcType="LONGVARCHAR" />
         <result column="email" property="email" jdbcType="VARCHAR" />
         <result column="address" property="address" jdbcType="VARCHAR" />
-        <result column="checkPic" property="checkPic" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="Base_Column_List" >
         id,name,password,role,state,depart,phone,email,address,checkPic
@@ -20,6 +20,12 @@
     <select id="selectUserById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List" />
+        from SystemUser
+        where id=#{0}
+    </select>
+    <select id="selectCheckPicByUser" resultType="java.lang.String" parameterType="java.lang.Long">
+        select
+        checkPic
         from SystemUser
         where id=#{0}
     </select>
