@@ -1,5 +1,6 @@
 package com.face.project.faceid.faceid.service.impl;
 
+import com.face.project.faceid.faceid.dao.SystemAttenceDao;
 import com.face.project.faceid.faceid.dao.SystemUserDao;
 import com.face.project.faceid.faceid.model.SystemUser;
 import com.face.project.faceid.faceid.service.SystemUserService;
@@ -10,12 +11,17 @@ import javax.servlet.http.HttpSession;
 
 @Service
 public class SystemUserServiceImpl implements SystemUserService {
+
     @Autowired
     private SystemUserDao systemUserDao;
+
+    @Autowired
+    private SystemAttenceDao systemAttenceDao;
 
     @Override
     public int loginCheck(Long id, String psw) {
         SystemUser user = systemUserDao.selectUserById(id);
+
         if(user==null){
             return -1;
         }
@@ -35,6 +41,24 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public SystemUser getUserById(Long id) {
         return systemUserDao.selectUserById(id);
+    }
+
+    @Override
+    public boolean getWorkState(Long id) {
+        int count = systemAttenceDao.selectCountForNullOut(id);
+        return count > 0;
+    }
+
+    @Override
+    public String getCheckPicByUser(Long id) {
+        String result = systemUserDao.selectCheckPicByUser(id);
+        System.out.println(result);
+        return result;
+    }
+
+    public boolean modifyifo(SystemUser user) {
+        systemUserDao.updateselective(user);
+        return true;
     }
 
 }

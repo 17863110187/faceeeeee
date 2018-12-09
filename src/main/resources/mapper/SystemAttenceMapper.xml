@@ -18,6 +18,9 @@
         <result column="outPic" property="outPic" jdbcType="VARCHAR" />
         <result column="name" property="name" jdbcType="VARCHAR" />
     </resultMap>
+    <sql id="Base_Column_List">
+        id,user,inTime,outTime,inPic,outPic
+    </sql>
     <select id="selectAttence" resultMap="Base_Result_Map">
         select
         a.id, a.user, a.inTime, a.outTime, a.inPic, a.outPic, u.name as name
@@ -28,7 +31,7 @@
             and u.id = #{userId}
         </if>
         <if test="userName != null">
-            and u.userName = #{userName}
+            and u.name = #{userName}
         </if>
         <if test="inTime != null">
             and a.inTime >= #{inTime}
@@ -37,6 +40,17 @@
             and a.outTime <![CDATA[<=]]> #{outTime}
         </if>
         and a.inTime <![CDATA[<=]]> a.outTime
+    </select>
+    <select id="selectCountForNullOut" resultType="java.lang.Integer" parameterType="java.lang.Long">
+        select count(*)
+        from SystemAttence
+        where user=#{0} and outTime is null
+    </select>
+    <select id="selectAttenceByUserForNull" resultMap="Base_Result_Map" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from SystemAttence
+        where user=#{0} and outTime is null
     </select>
     <select id="selectAttenceByUser" resultMap="SummaryResultMap" parameterType="com.face.project.faceid.faceid.model.SystemAttenceSummary">
         select sum(time) as time,year,month
@@ -54,4 +68,10 @@
             u.id=#{id,jdbcType=BIGINT} and a.user=#{id,jdbcType=BIGINT}) temp
         group by temp.year,temp.month
     </select>
+    <insert id="insert" parameterType="com.face.project.faceid.faceid.model.SystemAttence">
+        insert into SystemAttence (user,inTime) values(#{user,jdbcType=BIGINT},#{inTime,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="update" parameterType="com.face.project.faceid.faceid.model.SystemAttence">
+        update SystemAttence set outTime=#{outTime,jdbcType=TIMESTAMP} where id=#{id,jdbcType=BIGINT}
+    </update>
 </mapper>

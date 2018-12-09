@@ -14,4 +14,8 @@ public interface SystemUserDao {
     int AddUserInfo(SystemUser user);
 
     List<SystemUser> selectUserByDepart(String department);
+
+    String selectCheckPicByUser(Long id);
+    
+    int updateselective(SystemUser user);
 }

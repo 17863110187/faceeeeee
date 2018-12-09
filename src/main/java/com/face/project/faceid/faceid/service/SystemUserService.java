@@ -8,4 +8,10 @@ public interface SystemUserService {
     int resetPsw(SystemUser user);
 
     SystemUser getUserById(Long id);
+
+    boolean getWorkState(Long id);
+
+    String getCheckPicByUser(Long id);
+
+    boolean modifyifo(SystemUser user);
 }

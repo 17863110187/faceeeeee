@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.face.project.faceid.faceid.dao.AttendanceDetailsDao">
+    <resultMap id="Base_Result_Map" type="com.face.project.faceid.faceid.model.SystemAttendance" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user" property="user" jdbcType="BIGINT" />
+        <result column="inTime" property="inTime" jdbcType="TIMESTAMP" />
+        <result column="outTime" property="outTime" jdbcType="TIMESTAMP" />
+        <result column="inPic" property="inPic" jdbcType="VARCHAR" />
+        <result column="outPic" property="outPic" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAttendance" resultMap="Base_Result_Map">
+        select a.user,a.inTime,a.outTime
+        from systemattence a
+        where a.user=#{userid} and (year(a.inTime) = #{year} or year(a.outTime) = #{year})
+        and (month(a.inTime) = #{month} or month(a.outTime) = #{month})
+    </select>
+    <select id="selectAllAttendance" resultMap="Base_Result_Map">
+        select a.id,a.inTime,a.outTime
+        from systemattence a
+        where a.user=#{userid}
+    </select>
+</mapper>

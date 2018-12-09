@@ -18,4 +18,6 @@ public interface SystemAttenceService {
     List<SystemAttence> selectAttence(String user, Date inTime, Date outTime);
 
     Map<String,Object> getAttenceSummary(String name, String department, Integer year, Integer month);
+
+    int insertAttence(Long id,Boolean workstate);
 }

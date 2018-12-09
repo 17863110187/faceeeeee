@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta content="webkit" name="renderer" />
+    <!-- 360开启极速模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- ie渲染模式 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!--<link href="css/changePassword.css" rel="stylesheet">-->
 </head>
-<body>
-modifyInformation
+
+<body class="text-center">
+<form class="form-signin">
+    <!--<img class="mb-4" src="../images/jiqiren.png" alt="" width="72" height="72">  -->
+    <h1 class="h3 mb-3 font-weight-normal">编辑个人信息</h1>
+    <label for="inputname" class="sr-only">姓名</label>
+    <input type="name" id="inputname" class="form-control" placeholder="姓名"required>
+    <label for="inputphone" class="sr-only">联系方式</label>
+    <input type="number" id="inputphone" class="form-control" placeholder="联系方式" required>
+    <label for="inputemail" class="sr-only">邮箱</label>
+    <input type="email" id="inputemail" class="form-control" placeholder="邮箱" required>
+    <label for="inputaddress" class="sr-only">地址</label>
+    <input type="adress" id="inputaddress" class="form-control" placeholder="地址" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="button" id="submit">确认</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+</form>
+<script src="../jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/modifyInfomation.js"></script>
 </body>
 </html>
