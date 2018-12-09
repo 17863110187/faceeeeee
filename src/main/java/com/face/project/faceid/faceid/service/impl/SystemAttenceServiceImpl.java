@@ -32,11 +32,10 @@ public class SystemAttenceServiceImpl implements SystemAttenceService {
     public List<SystemAttence> selectAttence(String user, Date inTime, Date outTime) {
         Long userId = null;
         String userName = null;
-        int ifString;
         if (user != null && !user.equals("") && !user.equals("null")) {
-            Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
-            Matcher m = p.matcher(user);
-            if (m.find()) {
+            Pattern pattern = Pattern.compile("[0-9]*");
+//            Matcher m = p.matcher(user);
+            if (!pattern.matcher(user).matches()) {
                 userName = user;
             } else {
                 userId = Long.valueOf(user).longValue();
@@ -48,7 +47,6 @@ public class SystemAttenceServiceImpl implements SystemAttenceService {
         if (outTime == null) {
             outTime = null;
         }
-        System.out.println("      2222     " + userId + "   " + userName + "   " + inTime + "   " + outTime);
         List<SystemAttence> attences = systemAttenceDao.selectAttence(userId, userName, inTime, outTime);
         return attences;
     }

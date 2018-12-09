@@ -1,12 +1,17 @@
 package com.face.project.faceid.faceid.controller;
 
+
 import com.face.project.faceid.faceid.common.*;
+
+import com.face.project.faceid.faceid.common.ResponceMap;
+import com.face.project.faceid.faceid.model.Attence;
 import com.face.project.faceid.faceid.model.SystemAttence;
 import com.face.project.faceid.faceid.model.SystemUser;
 import com.face.project.faceid.faceid.service.SystemAttenceService;
 import com.face.project.faceid.faceid.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,8 +40,12 @@ public class SystemAttenceController {
 
     @RequestMapping(value = "selectAttence")
     @ResponseBody
-    public List<SystemAttence> selectAttence(@RequestParam(required = false)String user, @RequestParam(required = false) Date inTime, @RequestParam(required = false) Date outTime) {
-        return systemAttenceService.selectAttence(user, inTime, outTime);
+    public List<SystemAttence> selectAttence(@RequestBody Attence attence) {
+        if(attence == null){
+            return systemAttenceService.selectAttence(null, null, null);
+        }else {
+            return systemAttenceService.selectAttence(attence.getUser(), attence.getInTime(), attence.getOutTime());
+        }
     }
 
     @RequestMapping(value = "getAttenceSummary")

@@ -10,7 +10,10 @@ public class SystemUser {
     private Long phone;
     private String checkPic;
 
-    public SystemUser(Long id, String name, String password, String role, String state, String depart, Long phone, String checkPic) {
+    private  String address;
+    private  String email;
+
+    public SystemUser(Long id, String name, String password, String role, String state, String depart, Long phone, String checkPic, String address, String email) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -19,12 +22,30 @@ public class SystemUser {
         this.depart = depart;
         this.phone = phone;
         this.checkPic = checkPic;
+        this.address = address;
+        this.email = email;
     }
 
     public SystemUser(Long id, String password, Long phone){
         this.id = id;
         this.password = password;
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getId() {

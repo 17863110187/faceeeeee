@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta content="webkit" name="renderer" />
     <!-- 360开启极速模式 -->
@@ -9,32 +10,59 @@
     <!-- ie渲染模式 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-    <link href="../css/detailedInformation.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
-<body>
-<div id = "informationTable">
-    <div id="tableTopBar">
-        <div class="bar_searchBar">
-            <div class="name">
-                <label for="">姓名/工号：</label>
-                <input name="name" id="name" type="text" />
-                </select>
-            </div>
-            <div class="inTime">
-                <label for="">开始时间：</label>
-                <input name="inTime" id="inTime" type="text" />
-            </div>
-            <div class="outTime">
-                <label for="">结束时间：</label>
-                <input name="outTime" id="outTime" type="text" />
-            </div>
-            <button id="search">查询</button>
-        </div>
+<body style="margin-left: 50px">
+<table class="table table-hover table-dark">
+    <div class="row">
+        <h3 class="mb-3">考勤汇总</h3>
     </div>
-</div>
-    <!-- 可能需要写入按钮 -->
+    <div class="row">
+                <div class="row" style="width: 1200px">
+                    <div class="col-md-1.5 mb-3" style="padding-top: 5px">
+                        <label for="name">姓名/账号</label>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                    </div>
+                    <div class="col-md-1 mb-3" style="padding-top: 5px">
+                        <label for="inTime">开始时间</label>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <input type="date" class="form-control" id="inTime" placeholder="" value="" required>
+                    </div>
+                    <div class="col-md-1 mb-3" style="padding-top: 5px">
+                        <label for="outTime">结束时间</label>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <input type="date" class="form-control" id="outTime" placeholder="" value="" required>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <button class="btn btn-primary btn-lg btn-block " type="button" id="submit" onclick="find()" style="height: 40px;padding-bottom:5px">查询</button>
+                    </div>
+                </div>
+    </div>
+    <div id = "detailedTable"></div>
+    <thead>
+    <tr>
+        <th scope="col">工号</th>
+        <th scope="col">姓名</th>
+        <th scope="col">考勤时间</th>
+        <th scope="col">退勤时间</th>
+    </tr>
+    </thead>
+    <tbody id="informationTable">
+    <tr>
+        <td>1</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    </tbody>
+</table>
 
+<script src="../jquery/jquery.min.js"></script>
+<script src="../js/detailedInformation.js"></script>
 </body>
-
 </html>

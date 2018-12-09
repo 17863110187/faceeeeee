@@ -12,4 +12,6 @@ public interface SystemUserService {
     boolean getWorkState(Long id);
 
     String getCheckPicByUser(Long id);
+
+    boolean modifyifo(SystemUser user);
 }

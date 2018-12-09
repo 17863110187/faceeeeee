@@ -11,9 +11,11 @@
         <result column="depart" property="depart" jdbcType="CHAR" />
         <result column="phone" property="phone" jdbcType="BIGINT" />
         <result column="checkPic" property="checkPic" jdbcType="LONGVARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="Base_Column_List" >
-        id,name,password,role,state,depart,phone,checkPic
+        id,name,password,role,state,depart,phone,email,address,checkPic
     </sql>
     <select id="selectUserById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
@@ -35,7 +37,7 @@
     </select>
     <select id="selectUserByDepart" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
-        u.id,u.name,u.password,u.role,u.state,u.depart,u.phone,u.checkPic
+        u.id,u.name,u.password,u.role,u.state,u.depart,u.phone,u.email,u.address,u.checkPic
         from SystemUser u,SystemDepart d
         where u.depart=d.department and (d.department=#{0} or d.company=#{0})
     </select>
@@ -43,5 +45,22 @@
         update SystemUser
         set password=#{password,jdbcType=VARCHAR}
         where phone=#{phone,jdbcType=BIGINT} and id=#{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateselective" parameterType="com.face.project.faceid.faceid.model.SystemUser">
+        update SystemUser
+        set
+        <if test="name != null" >
+            name=#{name,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null" >
+            phone=#{phone,jdbcType=BIGINT},
+        </if>
+        <if test="email != null" >
+            email=#{email,jdbcType=VARCHAR},
+        </if>
+        <if test="address != null" >
+            address=#{address,jdbcType=BIGINT}
+        </if>
+        where id=#{id,jdbcType=BIGINT}
     </update>
 </mapper>

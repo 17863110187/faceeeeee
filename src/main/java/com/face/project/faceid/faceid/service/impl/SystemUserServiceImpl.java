@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 @Service
 public class SystemUserServiceImpl implements SystemUserService {
+
     @Autowired
     private SystemUserDao systemUserDao;
 
@@ -53,6 +54,11 @@ public class SystemUserServiceImpl implements SystemUserService {
         String result = systemUserDao.selectCheckPicByUser(id);
         System.out.println(result);
         return result;
+    }
+
+    public boolean modifyifo(SystemUser user) {
+        systemUserDao.updateselective(user);
+        return true;
     }
 
 }
